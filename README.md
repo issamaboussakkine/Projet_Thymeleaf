@@ -32,7 +32,9 @@ Application web de gestion des inscriptions pour un club sportif avec suivi des 
 ## Accéder à l'application
 
 Ouvrez votre navigateur :
-Page:	           URL
+
+Page:	       
+
 🏠 Accueil:  	http://localhost:8086
 
 📝 Inscriptions:	http://localhost:8086/inscriptions
