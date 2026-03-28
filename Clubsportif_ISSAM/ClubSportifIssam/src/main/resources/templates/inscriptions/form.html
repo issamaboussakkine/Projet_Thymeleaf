@@ -1,6 +1,7 @@
 <!DOCTYPE html>
+<!-- Issam : Formulaire de création/modification d'inscription -->
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="~{fragments :: head('Formulaire Inscription - ClubSportifIssam')}"></head>
+<head th:replace="~{fragments :: head('Formulaire Inscription - Issam ClubSportif')}"></head>
 <body class="main-wrapper">
 
 <div th:replace="~{fragments :: navbar}"></div>
@@ -9,6 +10,7 @@
     <div class="card shadow-sm border-0 w-100" style="max-width: 600px;">
         <div class="card-header bg-white border-0 pt-4 pb-0 text-center">
             <h3 class="text-primary" th:text="${inscription.id == null ? 'Nouvelle Inscription' : 'Modifier Inscription'}">Nouvelle Inscription</h3>
+            <p class="text-muted">Issam - Gestion des inscriptions</p>
         </div>
         <div class="card-body p-4">
             <form th:action="@{/inscriptions/sauvegarder}" th:object="${inscription}" method="post">
@@ -62,6 +64,7 @@
 
 <footer th:replace="~{fragments :: footer}"></footer>
 <div th:replace="~{fragments :: scripts}"></div>
+<!-- Issam : Script pour pré-remplir la date du jour -->
 <script>
     document.addEventListener("DOMContentLoaded", function() {
         const dateInput = document.querySelector('input[type="date"]');

@@ -1,10 +1,12 @@
 package com.issam.clubsportif.entity;
 
+// Issam : Imports JPA
 import jakarta.persistence.*;
 import java.util.List;
 
 /**
- * @author Issam ABOUSSAKKINE
+ * Issam : Entité Activité - Représente une activité sportive du club
+ * Auteur : Issam ABOUSSAKKINE
  */
 @Entity
 public class Activite {
@@ -17,12 +19,16 @@ public class Activite {
     private String niveau;
     private Integer capacite;
 
+    // Issam : Relation OneToMany avec Inscription
+    // Issam : mappedBy = "activite" signifie que la relation est gérée par l'entité Inscription
     @OneToMany(mappedBy = "activite", cascade = CascadeType.ALL)
     private List<Inscription> inscriptions;
 
+    // Issam : Constructeur par défaut
     public Activite() {
     }
 
+    // Issam : Getters et Setters
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
 

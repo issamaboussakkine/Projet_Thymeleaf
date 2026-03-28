@@ -1,5 +1,6 @@
 package com.issam.clubsportif.controller;
 
+// Issam : Imports
 import com.issam.clubsportif.entity.Activite;
 import com.issam.clubsportif.service.ActiviteService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,7 +9,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 /**
- * @author Issam ABOUSSAKKINE
+ * Issam : Contrôleur pour la gestion des activités
+ * Auteur : Issam ABOUSSAKKINE
  */
 @Controller
 @RequestMapping("/activites")
@@ -17,24 +19,36 @@ public class ActiviteController {
     @Autowired
     private ActiviteService activiteService;
 
+    /**
+     * Issam : Affiche la liste de toutes les activités
+     */
     @GetMapping
     public String listeActivites(Model model) {
         model.addAttribute("activites", activiteService.getAllActivites());
         return "activites/liste";
     }
 
+    /**
+     * Issam : Affiche le formulaire de création d'une activité
+     */
     @GetMapping("/nouveau")
     public String afficherFormulaireCreation(Model model) {
         model.addAttribute("activite", new Activite());
         return "activites/form";
     }
 
+    /**
+     * Issam : Sauvegarde une activité (création ou modification)
+     */
     @PostMapping("/sauvegarder")
     public String sauvegarderActivite(@ModelAttribute("activite") Activite activite) {
         activiteService.saveActivite(activite);
         return "redirect:/activites";
     }
 
+    /**
+     * Issam : Affiche le formulaire de modification d'une activité
+     */
     @GetMapping("/modifier/{id}")
     public String afficherFormulaireModification(@PathVariable("id") Long id, Model model) {
         Activite activite = activiteService.getActiviteById(id);
@@ -43,6 +57,9 @@ public class ActiviteController {
         return "activites/form";
     }
 
+    /**
+     * Issam : Supprime une activité par son ID
+     */
     @GetMapping("/supprimer/{id}")
     public String supprimerActivite(@PathVariable("id") Long id) {
         activiteService.deleteActivite(id);

@@ -1,54 +1,55 @@
 <!DOCTYPE html>
+<!-- Issam : Liste des inscriptions du club sportif -->
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="~{fragments :: head('Liste des Inscriptions - ClubSportifIssam')}"></head>
+<head th:replace="~{fragments :: head('Liste des Inscriptions - Issam ClubSportif')}"></head>
 <body class="main-wrapper">
 
 <div th:replace="~{fragments :: navbar}"></div>
 
 <div class="container content bg-white p-4 rounded shadow-sm">
     <div class="d-flex justify-content-between align-items-center mb-4">
-        <h2 class="text-primary"><i class="fa-solid fa-file-signature me-2"></i> Gestion des Inscriptions</h2>
+        <h2 class="text-primary"><i class="fa-solid fa-file-signature me-2"></i> Gestion des Inscriptions - Issam</h2>
         <a href="/inscriptions/nouveau" class="btn btn-primary"><i class="fa-solid fa-plus me-1"></i> Nouvelle Inscription</a>
     </div>
 
     <div class="table-responsive">
         <table class="table table-striped table-hover align-middle">
             <thead class="table-dark">
-                <tr>
-                    <th>Numéro</th>
-                    <th>Date</th>
-                    <th>Membre</th>
-                    <th>Activité</th>
-                    <th>Montant</th>
-                    <th>Statut</th>
-                    <th class="text-center">Actions</th>
-                </tr>
+            <tr>
+                <th>Numéro</th>
+                <th>Date</th>
+                <th>Membre</th>
+                <th>Activité</th>
+                <th>Montant</th>
+                <th>Statut</th>
+                <th class="text-center">Actions</th>
+            </tr>
             </thead>
             <tbody>
-                <tr th:each="inscription : ${inscriptions}">
-                    <td class="fw-bold" th:text="${inscription.id}">1</td>
-                    <td th:text="${#temporals.format(inscription.date, 'yyyy-MM-dd')}">2026-03-01</td>
-                    <td th:text="${inscription.membre != null ? inscription.membre.nom : 'N/A'}">Jean Dupont</td>
-                    <td th:text="${inscription.activite != null ? inscription.activite.nom : 'N/A'}">Yoga</td>
-                    <td th:text="${inscription.montant + ' DH'}">50.0 DH</td>
-                    <td>
-                        <span class="badge" 
+            <tr th:each="inscription : ${inscriptions}">
+                <td class="fw-bold" th:text="${inscription.id}">1</td>
+                <td th:text="${#temporals.format(inscription.date, 'yyyy-MM-dd')}">2026-03-01</td>
+                <td th:text="${inscription.membre != null ? inscription.membre.nom : 'N/A'}">Jean Dupont</td>
+                <td th:text="${inscription.activite != null ? inscription.activite.nom : 'N/A'}">Yoga</td>
+                <td th:text="${inscription.montant + ' DH'}">50.0 DH</td>
+                <td>
+                        <span class="badge"
                               th:classappend="${inscription.statut == 'Payé' ? 'bg-success' : (inscription.statut == 'Annulé' ? 'bg-danger' : 'bg-warning')}"
                               th:text="${inscription.statut}">Payé</span>
-                    </td>
-                    <td class="text-center">
-                        <a th:href="@{/inscriptions/modifier/{id}(id=${inscription.id})}" class="btn btn-sm btn-warning">
-                            <i class="fa-solid fa-pen"></i>
-                        </a>
-                        <a th:href="@{/inscriptions/supprimer/{id}(id=${inscription.id})}" class="btn btn-sm btn-danger ms-1" 
-                           onclick="return confirm('Êtes-vous sûr de vouloir supprimer cette inscription ?');">
-                            <i class="fa-solid fa-trash"></i>
-                        </a>
-                    </td>
-                </tr>
-                <tr th:if="${#lists.isEmpty(inscriptions)}">
-                    <td colspan="7" class="text-center text-muted py-4">Aucune inscription trouvée.</td>
-                </tr>
+                </td>
+                <td class="text-center">
+                    <a th:href="@{/inscriptions/modifier/{id}(id=${inscription.id})}" class="btn btn-sm btn-warning">
+                        <i class="fa-solid fa-pen"></i>
+                    </a>
+                    <a th:href="@{/inscriptions/supprimer/{id}(id=${inscription.id})}" class="btn btn-sm btn-danger ms-1"
+                       onclick="return confirm('Êtes-vous sûr de vouloir supprimer cette inscription ?');">
+                        <i class="fa-solid fa-trash"></i>
+                    </a>
+                </td>
+            </tr>
+            <tr th:if="${#lists.isEmpty(inscriptions)}">
+                <td colspan="7" class="text-center text-muted py-4">Aucune inscription trouvée.</td>
+            </tr>
             </tbody>
         </table>
     </div>

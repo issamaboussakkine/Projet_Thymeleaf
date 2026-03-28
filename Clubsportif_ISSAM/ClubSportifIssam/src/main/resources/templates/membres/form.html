@@ -1,6 +1,7 @@
 <!DOCTYPE html>
+<!-- Issam : Formulaire de création/modification de membre -->
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="~{fragments :: head('Formulaire Membre - ClubSportifIssam')}"></head>
+<head th:replace="~{fragments :: head('Formulaire Membre - Issam ClubSportif')}"></head>
 <body class="main-wrapper">
 
 <div th:replace="~{fragments :: navbar}"></div>
@@ -8,8 +9,9 @@
 <div class="container content d-flex justify-content-center">
     <div class="card shadow-sm border-0 w-100" style="max-width: 600px;">
         <div class="card-header bg-white border-0 pt-4 pb-0 text-center">
+            <!-- Issam : Titre dynamique selon création ou modification -->
             <h3 class="text-primary" th:text="${membre.id == null ? 'Nouveau Membre' : 'Modifier Membre'}">Nouveau Membre</h3>
-            <p class="text-muted">Renseignez le profil du membre</p>
+            <p class="text-muted">Renseignez le profil du membre - Issam</p>
         </div>
         <div class="card-body p-4">
             <form th:action="@{/membres/sauvegarder}" th:object="${membre}" method="post">
@@ -17,7 +19,7 @@
 
                 <div class="mb-3">
                     <label class="form-label fw-bold">Nom Complet</label>
-                    <input type="text" class="form-control" th:field="*{nom}" required placeholder="ex: Jean Dupont" />
+                    <input type="text" class="form-control" th:field="*{nom}" required placeholder="ex: Issam ABOUSSAKKINE" />
                 </div>
 
                 <div class="mb-3">
@@ -46,8 +48,8 @@
 
 <footer th:replace="~{fragments :: footer}"></footer>
 <div th:replace="~{fragments :: scripts}"></div>
+<!-- Issam : Script pour pré-remplir la date du jour -->
 <script>
-    // Ensure date input has a default value if empty
     document.addEventListener("DOMContentLoaded", function() {
         const dateInput = document.querySelector('input[type="date"]');
         if (!dateInput.value) {

@@ -1,12 +1,14 @@
 package com.issam.clubsportif.entity;
 
+// Issam : Imports JPA et formatage des dates
 import jakarta.persistence.*;
 import org.springframework.format.annotation.DateTimeFormat;
 import java.time.LocalDate;
 import java.util.List;
 
 /**
- * @author Issam ABOUSSAKKINE
+ * Issam : Entité Membre - Représente un membre du club sportif
+ * Auteur : Issam ABOUSSAKKINE
  */
 @Entity
 public class Membre {
@@ -17,17 +19,19 @@ public class Membre {
 
     private String nom;
     private String categorie;
-    
+
     @Column(name = "date_adhesion")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate dateAdhesion;
 
+    // Issam : Relation OneToMany avec Inscription
     @OneToMany(mappedBy = "membre", cascade = CascadeType.ALL)
     private List<Inscription> inscriptions;
 
     public Membre() {
     }
 
+    // Issam : Getters et Setters
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
 
